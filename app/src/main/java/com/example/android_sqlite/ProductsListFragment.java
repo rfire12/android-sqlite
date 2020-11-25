@@ -78,6 +78,6 @@ public class ProductsListFragment extends Fragment {
 
         productsListView.setAdapter(productsListAdapter);
 
-        return inflater.inflate(R.layout.fragment_products_list, container, false);
+        return view;
     }
 }
