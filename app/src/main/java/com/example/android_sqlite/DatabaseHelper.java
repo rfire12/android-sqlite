@@ -43,6 +43,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void updateProduct(String name, String price, String category, String oldName) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        System.out.println(name);
+        String query = "update product set name = '" + name + "', price = '" + price + "', category = '" + category + "' where name = '" + oldName + "'";
+
+        db.execSQL(query);
+    }
+
+
     public Cursor getProducts() {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.rawQuery("select * from product", null);
@@ -61,8 +70,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+
     public Cursor getCategories() {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.rawQuery("select * from category", null);
     }
+
+    public Cursor getProduct(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.rawQuery("select * from product where name = '" + name + "' limit 1", null);
+    }
+
+    public void deleteProduct(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from product where name = '" + name + "'");
+    }
+
+
 }

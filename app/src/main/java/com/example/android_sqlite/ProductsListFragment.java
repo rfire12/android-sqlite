@@ -76,9 +76,11 @@ public class ProductsListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String product = (String) parent.getItemAtPosition(position);
+                String item = (String) parent.getItemAtPosition(position);
+                String product = item.split(" -")[0];
+
                 Intent intent = new Intent(getContext(), EditProductActivity.class);
-                intent.putExtra("Product", product);
+                intent.putExtra("product", product);
                 startActivity(intent);
             }
         });
@@ -96,7 +98,7 @@ public class ProductsListFragment extends Fragment {
         ArrayList<String> productsList = new ArrayList<>();
 
         while(cursor.moveToNext()) {
-            productsList.add(cursor.getString(1));
+            productsList.add(cursor.getString(1) + " - $" + cursor.getString(2) + " - Cat.: " + cursor.getString(3));
         }
 
         productsListView = (ListView) view.findViewById(R.id.productsListView);
