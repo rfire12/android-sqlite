@@ -22,21 +22,21 @@
 
   <Spinner
       android:id="@+id/categorySpinner"
-      android:layout_width="206dp"
-      android:layout_height="34dp"
+      android:layout_width="229dp"
+      android:layout_height="42dp"
       android:layout_marginTop="24dp"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.078"
+      app:layout_constraintHorizontal_bias="0.087"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/productPriceTxt" />
 
   <Button
-      android:id="@+id/saveCategoryBtn"
-      android:layout_width="79dp"
-      android:layout_height="39dp"
-      android:layout_marginStart="20dp"
-      android:layout_marginTop="22dp"
-      android:text="@string/add_product"
+      android:id="@+id/addCategoryBtn"
+      android:layout_width="90dp"
+      android:layout_height="46dp"
+      android:layout_marginStart="24dp"
+      android:layout_marginTop="24dp"
+      android:text="@string/add"
       app:layout_constraintStart_toEndOf="@+id/categorySpinner"
       app:layout_constraintTop_toBottomOf="@+id/productPriceTxt" />
 
@@ -44,7 +44,7 @@
       android:id="@+id/productNameTxt"
       android:layout_width="381dp"
       android:layout_height="38dp"
-      android:layout_marginTop="16dp"
+      android:layout_marginTop="28dp"
       android:ems="10"
       android:hint="@string/enter_name"
       android:inputType="textPersonName"
@@ -64,5 +64,15 @@
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/productNameTxt" />
+
+  <Button
+      android:id="@+id/addProductBtn"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="28dp"
+      android:text="@string/save"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/categorySpinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

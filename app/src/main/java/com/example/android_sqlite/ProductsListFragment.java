@@ -1,12 +1,15 @@
 package com.example.android_sqlite;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -56,6 +59,25 @@ public class ProductsListFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        productsListView = getView().findViewById(R.id.productsListView);
+
+        productsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String product = (String) parent.getItemAtPosition(position);
+                Intent intent = new Intent(getContext(), EditProductActivity.class);
+                intent.putExtra("Product", product);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
