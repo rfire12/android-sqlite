@@ -48,6 +48,14 @@ public class EditProductActivity extends AppCompatActivity {
         String product = intent.getExtras().getString("product");
         setFieldsValues(product);
 
+        editAddCategoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EditProductActivity.this, CategoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
