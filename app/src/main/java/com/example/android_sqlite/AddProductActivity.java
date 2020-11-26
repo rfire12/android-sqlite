@@ -74,19 +74,19 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     protected void setCategoryItems() {
-        Cursor cursor = dbHelper.getProducts();
-        ArrayList<String> productsList = new ArrayList<>();
+        Cursor cursor = dbHelper.getCategories();
+        ArrayList<String> categoryList = new ArrayList<>();
 
         while(cursor.moveToNext()) {
-            productsList.add(cursor.getString(1));
+            categoryList.add(cursor.getString(1));
         }
 
-        ArrayAdapter<String> productsListAdapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> categoryListAdapter = new ArrayAdapter<String>(
                 AddProductActivity.this,
                 android.R.layout.simple_list_item_1,
-                productsList
+                categoryList
         );
 
-        categorySpinner.setAdapter(productsListAdapter);
+        categorySpinner.setAdapter(categoryListAdapter);
     }
 }
