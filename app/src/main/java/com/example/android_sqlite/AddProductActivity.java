@@ -54,10 +54,11 @@ public class AddProductActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String name = productNameTxt.getText().toString();
                 String price = productPriceTxt.getText().toString();
-                String category = categorySpinner.getSelectedItem().toString();
+                String category = categorySpinner.getSelectedItem() != null ?
+                        categorySpinner.getSelectedItem().toString() : "";
 
                 if (name.length() == 0 || price.length() == 0 || category.length() == 0) {
-                    Toast.makeText(AddProductActivity.this, "All fields must be filled",  Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddProductActivity.this, "All fields must be filled",  Toast.LENGTH_SHORT).show();
                     return; // bail
                 }
 
@@ -65,7 +66,7 @@ public class AddProductActivity extends AppCompatActivity {
                     Intent intent = new Intent(AddProductActivity.this, MainActivity.class);
                     startActivity(intent);
                 } else {
-                    Toast.makeText(AddProductActivity.this, "An error occurred",  Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddProductActivity.this, "An error occurred",  Toast.LENGTH_SHORT).show();
                 }
 
             }
