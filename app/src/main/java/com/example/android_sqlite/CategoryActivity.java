@@ -42,7 +42,7 @@ public class CategoryActivity extends AppCompatActivity {
                 }
 
 
-                Intent intent = new Intent(CategoryActivity.this, AddProductActivity.class);
+                Intent intent = new Intent(CategoryActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
