@@ -1,6 +1,7 @@
 package com.example.android_sqlite;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -12,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,9 +28,11 @@ public class ProductsListFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private DatabaseHelper dbHelper;
     private ListView productsListView;
 
     public ProductsListFragment() {
@@ -86,16 +91,20 @@ public class ProductsListFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_products_list, container, false);
 
-        String[] items = {
-                "PC",
-                "Mouse"
-        };
+        dbHelper = new DatabaseHelper(getActivity());
+        Cursor cursor = dbHelper.getProducts();
+        ArrayList<String> productsList = new ArrayList<>();
+
+        while(cursor.moveToNext()) {
+            productsList.add(cursor.getString(1));
+        }
+
         productsListView = (ListView) view.findViewById(R.id.productsListView);
 
         ArrayAdapter<String> productsListAdapter = new ArrayAdapter<String>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
-                items
+                productsList
         );
 
         productsListView.setAdapter(productsListAdapter);
